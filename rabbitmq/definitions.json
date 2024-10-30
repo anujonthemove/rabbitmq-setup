@@ -1,0 +1,21 @@
+{
+    "users": [{"name": "admin", "password": "admin", "tags": "administrator"}],
+    "vhosts": [{"name": "/"}],
+    "permissions": [{
+      "user": "admin",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }],
+    "queues": [{"name": "test_task_queue", "vhost": "/", "durable": true}],
+    "exchanges": [{"name": "test_exchange", "vhost": "/", "type": "direct", "durable": true, "auto_delete": false}],
+    "bindings": [{
+      "source": "test_exchange",
+      "vhost": "/",
+      "destination": "test_task_queue",
+      "destination_type": "queue",
+      "routing_key": "test_task"
+    }]
+  }
+  
